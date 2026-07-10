@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>axiomloop — 100 wordmark concepts</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- A broad set of display / techy / geometric fonts to sample -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@500;600;700&family=Manrope:wght@600;700;800&family=Montserrat:wght@600;700;800&family=Orbitron:wght@600;700;800&family=Rajdhani:wght@600;700&family=Exo+2:wght@600;700;800&family=Chakra+Petch:wght@600;700&family=Syne:wght@700;800&family=Outfit:wght@600;700;800&family=Lexend:wght@600;700&family=Archivo:wght@700;800&family=Michroma&family=Kanit:wght@600;700&family=Oxanium:wght@600;700;800&family=Sora:wght@800&family=Saira:wght@600;700&family=Unbounded:wght@600;700;800&family=Audiowide&family=Russo+One&family=Teko:wght@600;700&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#070a11; --bg2:#0d1220; --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.16);
+      --text:#e9eef7; --mut:#9aa7bd; --dim:#6b7688;
+      --cyan:#38f5d4; --violet:#7c5cff; --blue:#4d9bff;
+      --grad:linear-gradient(105deg,#38f5d4 0%,#4d9bff 48%,#7c5cff 100%);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.5;
+      background-image:radial-gradient(900px 500px at 80% -5%,rgba(124,92,255,.14),transparent 60%),
+        radial-gradient(700px 400px at 5% 0%,rgba(56,245,212,.10),transparent 55%);}
+    header{padding:48px 24px 20px;max-width:1300px;margin:0 auto;text-align:center}
+    h1{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em}
+    header p{color:var(--mut);margin-top:10px;max-width:640px;margin-inline:auto}
+    .toolbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:22px 0 6px}
+    .toolbar button{background:rgba(255,255,255,.04);color:var(--text);border:1px solid var(--line2);
+      padding:8px 16px;border-radius:999px;font-size:.85rem;cursor:pointer;font-weight:600;transition:.25s}
+    .toolbar button:hover,.toolbar button.active{border-color:var(--cyan);color:#fff;background:rgba(56,245,212,.08)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;
+      max-width:1300px;margin:20px auto 80px;padding:0 24px}
+    .cell{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02);
+      overflow:hidden;transition:.3s;display:flex;flex-direction:column}
+    .cell:hover{border-color:var(--line2);transform:translateY(-3px);background:rgba(255,255,255,.04)}
+    .cell.light .stage{background:#f4f6fb}
+    .stage{min-height:150px;display:flex;align-items:center;justify-content:center;padding:26px 20px;
+      background:var(--bg2)}
+    .meta{display:flex;justify-content:space-between;align-items:center;gap:8px;
+      padding:11px 16px;border-top:1px solid var(--line);font-size:.78rem;color:var(--dim)}
+    .num{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-weight:700}
+    .fam{color:var(--mut);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:.68rem}
+    footer{text-align:center;color:var(--dim);padding:0 24px 60px;font-size:.85rem}
+
+    /* ===== wordmark primitives ===== */
+    .wm{color:var(--text);white-space:nowrap;display:inline-flex;align-items:center}
+    .light .wm{color:#0c1220}
+    .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+      filter:drop-shadow(0 0 8px rgba(56,245,212,.28))}
+    .inf{font-size:1.12em;line-height:0;position:relative;top:.02em}
+    .mut{color:var(--mut)} .light .mut{color:#5a6478}
+    /* inline */
+    .l-inline{font-size:1.9rem;font-weight:700;letter-spacing:-.01em}
+    /* stacked */
+    .l-stack{display:inline-flex;flex-direction:column;line-height:.98}
+    .l-stack .row{display:flex;justify-content:space-between;font-weight:700}
+    .l-stack .r1{text-transform:uppercase}
+    .l-stack .r2{text-transform:lowercase}
+    .l-stack.big .row{font-size:1.5rem;width:6.6em}
+    /* caps wide */
+    .l-caps{font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:1.35rem}
+    /* monogram */
+    .mono{display:inline-flex;align-items:center;gap:12px}
+    .badge{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+      background:var(--grad);color:#04121a;font-weight:800;font-size:1.4rem;
+      box-shadow:0 6px 20px -8px rgba(56,245,212,.5)}
+    .badge.ring{background:transparent;border:2px solid;border-image:var(--grad) 1;color:var(--text)}
+    .light .badge.ring{color:#0c1220}
+    .icoinf{font-size:1.7rem;line-height:0}
+    /* pill separator */
+    .dotsep{opacity:.5;margin:0 .06em}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>axiomloop — 100 wordmark concepts</h1>
+    <p>Browse the grid and note the numbers you like (e.g. “#12, #47, #83”). Tell me your favourites
+       and I’ll refine those into the final logo and drop it into the site.</p>
+    <div class="toolbar" id="toolbar">
+      <button data-f="all" class="active">All</button>
+      <button data-f="A">Inline</button>
+      <button data-f="B">Two-tone</button>
+      <button data-f="C">Infinity</button>
+      <button data-f="D">Stacked</button>
+      <button data-f="E">Caps / wide</button>
+      <button data-f="F">Monogram</button>
+      <button data-f="G">Icon + text</button>
+      <button id="bgToggle">Toggle light cards</button>
+    </div>
+  </header>
+
+  <div class="grid" id="grid"></div>
+
+  <footer>Same accent gradient as the site (cyan → blue → violet). Fonts pulled live from Google Fonts.</footer>
+
+  <script>
+    // ---- Fonts available (must match the <link> above) ----
+    const FONTS = ["Sora","Space Grotesk","Poppins","Manrope","Montserrat","Orbitron",
+      "Rajdhani","Exo 2","Chakra Petch","Syne","Outfit","Lexend","Archivo","Michroma",
+      "Kanit","Oxanium","Saira","Unbounded","Audiowide","Russo One","Teko","JetBrains Mono"];
+
+    const ff = (f) => `font-family:'${f}',sans-serif`;
+
+    // ---- Renderers: each returns the inner HTML of a wordmark ----
+    // family A: plain inline lowercase
+    const A = (f) => `<span class="wm l-inline" style="${ff(f)}">axiomloop</span>`;
+    // family B: two-tone (axiom solid + loop gradient)
+    const B = (f) => `<span class="wm l-inline" style="${ff(f)}">axiom<span class="g">loop</span></span>`;
+    // family C: infinity variants
+    const C = (f, v) => {
+      if(v===0) return `<span class="wm l-inline" style="${ff(f)}">axioml<span class="inf g">∞</span>p</span>`;
+      if(v===1) return `<span class="wm l-inline" style="${ff(f)}">axiom<span class="inf g dotsep">∞</span>loop</span>`;
+      return `<span class="wm l-inline" style="${ff(f)}"><span class="mut">axiom</span>l<span class="inf g">∞</span>p</span>`;
+    };
+    // family D: stacked AXIOM / loop (equal width, justified)
+    const D = (f, v) => {
+      const bot = v===1
+        ? `<span class="row r2"><b>l</b><b class="g inf">∞</b><b>p</b></span>`
+        : `<span class="row r2"><b>l</b><b>o</b><b>o</b><b>p</b></span>`;
+      return `<span class="wm l-stack big" style="${ff(f)}">
+        <span class="row r1"><b>A</b><b>X</b><b>I</b><b>O</b><b>M</b></span>${bot}</span>`;
+    };
+    // family E: caps wide
+    const E = (f, v) => v===1
+      ? `<span class="wm l-caps" style="${ff(f)}">AXIOM<span class="g">LOOP</span></span>`
+      : `<span class="wm l-caps g" style="${ff(f)}">AXIOMLOOP</span>`;
+    // family F: monogram badge + text
+    const F = (f, v) => {
+      const badge = v===1
+        ? `<span class="badge ring" style="${ff(f)}">∞</span>`
+        : `<span class="badge" style="${ff(f)}">A</span>`;
+      return `<span class="mono">${badge}<span class="wm l-inline" style="${ff(f)};font-size:1.5rem">axiom<span class="g">loop</span></span></span>`;
+    };
+    // family G: infinity icon + text
+    const G = (f) => `<span class="mono"><span class="icoinf g">∞</span>
+      <span class="wm l-inline" style="${ff(f)};font-size:1.55rem">axiomloop</span></span>`;
+
+    // ---- Build 100 samples across families (font tracked for captions) ----
+    const famName = {A:"Inline",B:"Two-tone",C:"Infinity",D:"Stacked",E:"Caps",F:"Monogram",G:"Icon"};
+    const grid = document.getElementById("grid");
+    const built = [];
+    const add = (fam, f, html) => built.push({fam, f, html});
+    FONTS.forEach(f=> add("A", f, A(f)));                         // 22
+    FONTS.forEach(f=> add("B", f, B(f)));                         // 22
+    FONTS.slice(0,16).forEach((f,i)=> add("C", f, C(f,i%3)));     // 16
+    FONTS.slice(0,14).forEach((f,i)=> add("D", f, D(f,i%2)));     // 14
+    FONTS.slice(0,10).forEach((f,i)=> add("E", f, E(f,i%2)));     // 10
+    FONTS.slice(0,10).forEach((f,i)=> add("F", f, F(f,i%2)));     // 10
+    FONTS.slice(0,6).forEach((f)=>   add("G", f, G(f)));          // 6  → 100 total
+
+    built.forEach((s, i)=>{
+      const cell = document.createElement("div");
+      cell.className = "cell";
+      cell.dataset.fam = s.fam;
+      cell.innerHTML =
+        `<div class="stage">${s.html}</div>
+         <div class="meta"><span class="num">#${String(i+1).padStart(2,"0")}</span>
+         <span class="fam">${famName[s.fam]} · ${s.f}</span></div>`;
+      grid.appendChild(cell);
+    });
+
+    // ---- Filters ----
+    document.querySelectorAll("#toolbar [data-f]").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        document.querySelectorAll("#toolbar [data-f]").forEach(b=>b.classList.remove("active"));
+        btn.classList.add("active");
+        const f = btn.dataset.f;
+        document.querySelectorAll(".cell").forEach(c=>{
+          c.style.display = (f==="all"||c.dataset.fam===f) ? "" : "none";
+        });
+      });
+    });
+    document.getElementById("bgToggle").addEventListener("click", ()=>{
+      document.querySelectorAll(".cell").forEach(c=>c.classList.toggle("light"));
+    });
+  </script>
+</body>
+</html>

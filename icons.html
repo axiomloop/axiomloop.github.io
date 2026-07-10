@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>axiomloop - 100 icon variants</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#070a11; --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.16);
+      --text:#e9eef7; --mut:#9aa7bd; --dim:#6b7688; --cyan:#38f5d4;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.5;
+      background-image:radial-gradient(900px 500px at 80% -5%,rgba(124,92,255,.14),transparent 60%),
+        radial-gradient(700px 400px at 5% 0%,rgba(56,245,212,.10),transparent 55%);}
+    header{padding:48px 24px 12px;max-width:1300px;margin:0 auto;text-align:center}
+    h1{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em}
+    header p{color:var(--mut);margin-top:10px;max-width:660px;margin-inline:auto}
+    .toolbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:22px 0 6px}
+    .toolbar button{background:rgba(255,255,255,.04);color:var(--text);border:1px solid var(--line2);
+      padding:8px 16px;border-radius:999px;font-size:.85rem;cursor:pointer;font-weight:600;transition:.25s}
+    .toolbar button:hover,.toolbar button.active{border-color:var(--cyan);color:#fff;background:rgba(56,245,212,.08)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;
+      max-width:1300px;margin:20px auto 80px;padding:0 24px}
+    .cell{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02);
+      overflow:hidden;transition:.3s;display:flex;flex-direction:column}
+    .cell:hover{border-color:var(--line2);transform:translateY(-3px);background:rgba(255,255,255,.04)}
+    .stage{min-height:120px;display:flex;align-items:center;justify-content:center;padding:20px}
+    .stage svg{width:84px;height:84px;display:block}
+    .meta{display:flex;justify-content:space-between;align-items:center;gap:8px;
+      padding:10px 14px;border-top:1px solid var(--line);font-size:.72rem;color:var(--dim)}
+    .num{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-weight:700}
+    .lab{color:var(--mut);font-weight:600;text-align:right}
+    .badge{display:inline-block;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+      color:#04121a;background:var(--cyan);border-radius:6px;padding:2px 6px;margin-left:6px}
+    footer{text-align:center;color:var(--dim);padding:0 24px 60px;font-size:.85rem}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>axiomloop - 100 icon variants</h1>
+    <p>Same 5-node graph mark, 100 ways. Note the numbers you like (e.g. "#7, #42, #88").
+       The <span style="color:var(--cyan)">ANIM</span> variants are dynamic - watch the data move
+       between the nodes. Tell me your favourites and I'll set it as the site favicon + hero mark.</p>
+    <div class="toolbar" id="toolbar">
+      <button data-f="all" class="active">All</button>
+      <button data-f="static">Static</button>
+      <button data-f="animated">Animated</button>
+      <button data-f="flow">Data flow</button>
+      <button data-f="pulse">Pulse</button>
+      <button data-f="colorcycle">Color cycle</button>
+      <button data-f="rotate">Rotate</button>
+    </div>
+  </header>
+
+  <div class="grid" id="grid"></div>
+  <footer>All marks are scalable SVG. Animated ones use native SVG animation - no JS, no images.</footer>
+
+  <script>
+    // ---- Palettes: a & b = node colors, c = accent, mid = centre node ----
+    const P = [
+      {n:"Brand",   a:"#38f5d4", b:"#7c5cff", c:"#4d9bff", mid:"#eafcff"},
+      {n:"Emerald", a:"#34d399", b:"#059669", c:"#6ee7b7", mid:"#ecfdf5"},
+      {n:"Sunset",  a:"#ff6b6b", b:"#f59e0b", c:"#ffd43b", mid:"#fff7ed"},
+      {n:"Ocean",   a:"#22d3ee", b:"#6366f1", c:"#3b82f6", mid:"#eff6ff"},
+      {n:"Magenta", a:"#ff5ec7", b:"#7c5cff", c:"#b14bff", mid:"#fdf4ff"},
+      {n:"Amber",   a:"#fbbf24", b:"#f59e0b", c:"#fde68a", mid:"#fffbeb"},
+      {n:"Ice",     a:"#a5f3fc", b:"#818cf8", c:"#38bdf8", mid:"#f0f9ff"},
+      {n:"Lime",    a:"#a3e635", b:"#22c55e", c:"#4ade80", mid:"#f7fee7"},
+      {n:"Coral",   a:"#fb7185", b:"#2dd4bf", c:"#38f5d4", mid:"#fff1f2"},
+      {n:"Mono",    a:"#ffffff", b:"#94a3b8", c:"#cbd5e1", mid:"#ffffff"},
+      {n:"Ruby",    a:"#ff4d4d", b:"#b91c1c", c:"#ff8080", mid:"#fef2f2"},
+      {n:"Violet",  a:"#c084fc", b:"#7c3aed", c:"#a855f7", mid:"#f5f3ff"},
+    ];
+
+    // ---- Geometry (matches the site favicon) ----
+    const N = [[20,22],[44,18],[46,44],[20,46],[33,32]];   // 4 corners + centre
+    const NR = [4,4,4,4,4.6];
+    const E  = [[0,4],[1,4],[2,4],[3,4],[0,3],[1,2]];      // edges
+    const nodeColor = (p,i) => [p.a,p.b,p.a,p.b,p.mid][i];
+
+    function bgMarkup(bg){
+      if(bg==="sq-dark")  return '<rect width="64" height="64" rx="14" fill="#0a0e17"/>';
+      if(bg==="sq-black") return '<rect width="64" height="64" rx="14" fill="#05070c"/>';
+      if(bg==="circle")   return '<circle cx="32" cy="32" r="32" fill="#0a0e17"/>';
+      if(bg==="light")    return '<rect width="64" height="64" rx="14" fill="#eef1f7"/>';
+      return ''; // none / transparent
+    }
+
+    function buildIcon(cfg, uid){
+      const {p, bg, style, anim} = cfg;
+      const gid = "g"+uid;
+      let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">`;
+      s += `<defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="${p.a}"/><stop offset="1" stop-color="${p.b}"/>
+            </linearGradient></defs>`;
+      s += bgMarkup(bg);
+
+      const rotOpen = anim==="rotate"
+        ? `<g><animateTransform attributeName="transform" type="rotate" from="0 32 32" to="360 32 32" dur="14s" repeatCount="indefinite"/>`
+        : `<g>`;
+      s += rotOpen;
+
+      // edges
+      const ew = (bg==="light") ? 2.2 : 2.4;
+      const eo = (style==="ring") ? 0.85 : 0.9;
+      E.forEach(([a,b]) => {
+        s += `<line x1="${N[a][0]}" y1="${N[a][1]}" x2="${N[b][0]}" y2="${N[b][1]}"
+                stroke="url(#${gid})" stroke-width="${ew}" opacity="${eo}" stroke-linecap="round"/>`;
+      });
+
+      // data-flow travelling dots
+      if(anim==="flow"){
+        E.forEach(([a,b],k) => {
+          const [ax,ay]=N[a], [bx,by]=N[b];
+          s += `<circle r="1.8" fill="${p.mid}" opacity="0.95">
+                  <animateMotion dur="1.6s" begin="${(k*0.24).toFixed(2)}s" repeatCount="indefinite"
+                    path="M ${ax} ${ay} L ${bx} ${by}"/>
+                </circle>`;
+        });
+      }
+
+      // nodes
+      N.forEach(([x,y],i) => {
+        const col = nodeColor(p,i);
+        const r = NR[i];
+        if(style==="glow"){
+          const halo = `<circle cx="${x}" cy="${y}" r="${(r*1.9).toFixed(1)}" fill="${col}" opacity="0.16">`
+            + (anim==="pulse" ? `<animate attributeName="opacity" values="0.05;0.3;0.05" dur="2.4s" begin="${(i*0.3).toFixed(2)}s" repeatCount="indefinite"/>` : ``)
+            + `</circle>`;
+          s += halo;
+          s += `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}">`
+            + (anim==="pulse" ? `<animate attributeName="opacity" values="1;0.4;1" dur="2.4s" begin="${(i*0.3).toFixed(2)}s" repeatCount="indefinite"/>` : ``)
+            + `</circle>`;
+        } else if(style==="ring"){
+          if(i===4){ s += `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}"/>`; }
+          else { s += `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="${col}" stroke-width="2.2"/>`; }
+        } else { // flat
+          s += `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}">`
+            + (anim==="colorcycle" ? `<animate attributeName="fill" values="${p.a};${p.c};${p.b};${p.mid};${p.a}" dur="3.2s" begin="${(i*0.35).toFixed(2)}s" repeatCount="indefinite"/>` : ``)
+            + `</circle>`;
+        }
+      });
+
+      s += `</g></svg>`;
+      return s;
+    }
+
+    // ---- Build 100 configs: 60 static + 40 animated ----
+    const items = [];
+    const staticCombos = [
+      {bg:"sq-dark", style:"glow", label:"Dark / glow"},
+      {bg:"sq-dark", style:"ring", label:"Dark / ring"},
+      {bg:"circle",  style:"flat", label:"Circle / flat"},
+      {bg:"none",    style:"glow", label:"Bare / glow"},
+      {bg:"light",   style:"flat", label:"Light / flat"},
+    ];
+    P.forEach(p => staticCombos.forEach(c =>
+      items.push({p, bg:c.bg, style:c.style, anim:"none", tag:"static", label:`${p.n} / ${c.label}`})));
+
+    const animCombos = [
+      {anim:"flow",       bg:"sq-dark", style:"glow", label:"Data flow"},
+      {anim:"pulse",      bg:"sq-dark", style:"glow", label:"Pulse"},
+      {anim:"colorcycle", bg:"sq-dark", style:"flat", label:"Color cycle"},
+      {anim:"rotate",     bg:"sq-dark", style:"glow", label:"Rotate"},
+    ];
+    P.slice(0,10).forEach(p => animCombos.forEach(a =>
+      items.push({p, bg:a.bg, style:a.style, anim:a.anim, tag:"animated", label:`${p.n} / ${a.label}`})));
+
+    // ---- Render ----
+    const grid = document.getElementById("grid");
+    items.forEach((cfg, i) => {
+      const cell = document.createElement("div");
+      cell.className = "cell";
+      cell.dataset.tag = cfg.tag;
+      cell.dataset.anim = cfg.anim;
+      const badge = cfg.tag==="animated" ? '<span class="badge">anim</span>' : '';
+      cell.innerHTML =
+        `<div class="stage">${buildIcon(cfg, i)}</div>
+         <div class="meta"><span class="num">#${String(i+1).padStart(2,"0")}</span>
+         <span class="lab">${cfg.label}${badge}</span></div>`;
+      grid.appendChild(cell);
+    });
+
+    // ---- Filters ----
+    document.querySelectorAll("#toolbar [data-f]").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        document.querySelectorAll("#toolbar [data-f]").forEach(b=>b.classList.remove("active"));
+        btn.classList.add("active");
+        const f = btn.dataset.f;
+        document.querySelectorAll(".cell").forEach(c=>{
+          let show = f==="all"
+            || c.dataset.tag===f
+            || c.dataset.anim===f;
+          c.style.display = show ? "" : "none";
+        });
+      });
+    });
+  </script>
+</body>
+</html>

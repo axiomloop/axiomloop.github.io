@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0e17" />
+  <title>axiomloop — Deep-Tech Infrastructure for the Physical & Digital Edge</title>
+  <meta name="description" content="axiomloop builds deep-tech infrastructure across IoT, WebAssembly, eBPF, RFID, observability, and graph-based validation — engineered for enterprise platform teams." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="axiomloop — Deep-Tech Infrastructure" />
+  <meta property="og:description" content="IoT · WebAssembly · eBPF · RFID · Observability · Graph Validation. Enterprise-grade, edge-native, engineered to scale." />
+  <meta property="og:image" content="assets/img/favicon.svg" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/icon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Chakra+Petch:wght@600;700&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- Skip link for a11y -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- 3D hero canvas layer -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="brand" aria-label="axiomloop home">
+        <img src="assets/img/icon-animated.svg" alt="" class="brand__mark" width="36" height="36" />
+        <span class="brand__name brand__name--stack">
+          <span class="brand__row brand__top" aria-hidden="true"><b>A</b><b>X</b><b>I</b><b>O</b><b>M</b></span>
+          <span class="brand__row brand__bot" aria-hidden="true"><b>L</b><b>O</b><b>O</b><b>P</b></span>
+          <span class="vh">axiomloop</span>
+        </span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#platform">Platform</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#architecture">How it works</a>
+        <a href="#company">Company</a>
+      </nav>
+      <div class="nav__actions">
+        <a href="#contact" class="btn btn--ghost" data-modal="talk">Talk to us</a>
+        <a href="#try" class="btn btn--primary" data-modal="pilot">Get started</a>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav__mobile" id="navMobile" aria-label="Mobile">
+      <a href="#platform">Platform</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#architecture">How it works</a>
+      <a href="#company">Company</a>
+      <a href="#try" class="btn btn--primary btn--block" data-modal="pilot">Get started</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="pill reveal" data-reveal>
+          <span class="pill__dot"></span> Edge-native infrastructure, built for scale
+        </div>
+        <h1 class="hero__title reveal" data-reveal>
+          Deep-tech infrastructure for the
+          <span class="grad">physical &amp; digital edge</span>
+        </h1>
+        <p class="hero__sub reveal" data-reveal>
+          axiomloop unifies <strong>IoT</strong>, <strong>WebAssembly</strong>, <strong>eBPF</strong>,
+          <strong>RFID</strong>, <strong>observability</strong>, and <strong>graph-based validation</strong>
+          into one engineering platform — so your systems see everything, trust everything, and scale everywhere.
+        </p>
+        <div class="hero__cta reveal" data-reveal>
+          <a href="#try" class="btn btn--primary btn--lg" data-modal="pilot">Start building <span class="arr">→</span></a>
+          <a href="#platform" class="btn btn--ghost btn--lg">Explore the platform</a>
+        </div>
+        <div class="hero__meta reveal" data-reveal>
+          <span>Kernel-level insight</span><i></i>
+          <span>Sub-ms edge compute</span><i></i>
+          <span>Provable data integrity</span>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- ===== TRUST STRIP ===== -->
+    <section class="strip">
+      <div class="container">
+        <p class="strip__label">Engineered for the teams that run critical infrastructure</p>
+        <div class="strip__logos">
+          <span>CTOs</span>
+          <span>Platform Engineering</span>
+          <span>SRE &amp; Observability</span>
+          <span>Industrial IoT</span>
+          <span>Supply Chain &amp; Logistics</span>
+          <span>Smart Cities</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PLATFORM / VALUE PROPS ===== -->
+    <section id="platform" class="section">
+      <div class="container">
+        <div class="section__head reveal" data-reveal>
+          <span class="eyebrow">The platform</span>
+          <h2>One layer between the world and your code</h2>
+          <p>From the sensor to the kernel to the graph — axiomloop closes the gap between what happens
+             in the physical world and what your software can prove about it.</p>
+        </div>
+        <div class="valprops">
+          <article class="valprop reveal" data-reveal>
+            <div class="valprop__ico">◈</div>
+            <h3>See everything</h3>
+            <p>Kernel-level observability with eBPF and edge telemetry from millions of devices —
+               zero-instrumentation, low overhead, full fidelity.</p>
+          </article>
+          <article class="valprop reveal" data-reveal>
+            <div class="valprop__ico">⬡</div>
+            <h3>Run anywhere</h3>
+            <p>Portable WebAssembly compute pushes logic to the edge — the same secure sandbox from
+               a gateway to a data centre, deployed in milliseconds.</p>
+          </article>
+          <article class="valprop reveal" data-reveal>
+            <div class="valprop__ico">◇</div>
+            <h3>Trust everything</h3>
+            <p>Graph-based validation turns raw events into a verifiable model — so every reading,
+               tag, and signal is provable, not just plausible.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CAPABILITIES GRID ===== -->
+    <section id="capabilities" class="section section--alt">
+      <div class="container">
+        <div class="section__head reveal" data-reveal>
+          <span class="eyebrow">Capabilities</span>
+          <h2>A deep-tech stack, end to end</h2>
+          <p>Six disciplines most companies buy from six vendors — engineered by us into one coherent platform.</p>
+        </div>
+        <div class="cards">
+          <article class="card reveal" data-reveal>
+            <div class="card__tag">IoT &amp; Edge</div>
+            <h3>Sensor-to-cloud fabric</h3>
+            <p>Device management, secure provisioning, and resilient data pipelines for millions of
+               endpoints across industrial, agricultural, and smart-city deployments.</p>
+            <ul class="card__list">
+              <li>Fleet provisioning &amp; OTA</li>
+              <li>Edge buffering &amp; store-forward</li>
+              <li>Predictive maintenance signals</li>
+            </ul>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card__tag">WebAssembly</div>
+            <h3>Portable edge compute</h3>
+            <p>Sandboxed, near-native Wasm modules that run identical logic on gateways, servers,
+               and browsers — hot-deployable and language-agnostic.</p>
+            <ul class="card__list">
+              <li>Sub-millisecond cold starts</li>
+              <li>Capability-based security</li>
+              <li>Polyglot module registry</li>
+            </ul>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card__tag">eBPF</div>
+            <h3>Kernel-level insight</h3>
+            <p>Safe, programmable observability and networking directly in the Linux kernel —
+               deep visibility with negligible overhead and no app changes.</p>
+            <ul class="card__list">
+              <li>Zero-instrumentation tracing</li>
+              <li>Network &amp; security enforcement</li>
+              <li>Continuous profiling</li>
+            </ul>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card__tag">RFID &amp; RF sensing</div>
+            <h3>Physical-world identity</h3>
+            <p>High-throughput RFID and RF sensing that gives every physical asset a live digital
+               identity — inventory, logistics, and tracking that never blinks.</p>
+            <ul class="card__list">
+              <li>Bulk read &amp; localisation</li>
+              <li>Anti-collision &amp; de-dup</li>
+              <li>Digital-twin sync</li>
+            </ul>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card__tag">Observability</div>
+            <h3>Unified telemetry</h3>
+            <p>Metrics, logs, traces, and events from edge to core — correlated in real time so
+               teams find root cause in seconds, not sprints.</p>
+            <ul class="card__list">
+              <li>OpenTelemetry-native</li>
+              <li>High-cardinality at the edge</li>
+              <li>SLO &amp; anomaly detection</li>
+            </ul>
+          </article>
+
+          <article class="card reveal" data-reveal>
+            <div class="card__tag">Graph validation</div>
+            <h3>Provable data integrity</h3>
+            <p>A graph engine that models relationships between every device, event, and asset —
+               validating consistency and catching what flat pipelines miss.</p>
+            <ul class="card__list">
+              <li>Relationship-aware rules</li>
+              <li>Lineage &amp; provenance</li>
+              <li>Continuous integrity checks</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOLUTIONS ===== -->
+    <section id="solutions" class="section">
+      <div class="container">
+        <div class="section__head reveal" data-reveal>
+          <span class="eyebrow">Solutions</span>
+          <h2>Built for real-world scale</h2>
+          <p>The same platform, shaped for the outcomes enterprises actually need.</p>
+        </div>
+        <div class="solutions">
+          <article class="solution reveal" data-reveal>
+            <h3>Supply chain &amp; warehouse automation</h3>
+            <p>Real-time RFID visibility fused with graph validation — accurate inventory,
+               provable chain-of-custody, and automated exception handling.</p>
+          </article>
+          <article class="solution reveal" data-reveal>
+            <h3>Industrial IoT &amp; predictive maintenance</h3>
+            <p>Edge-analysed sensor data with Wasm modules on the line — anomalies caught before
+               they become downtime.</p>
+          </article>
+          <article class="solution reveal" data-reveal>
+            <h3>Platform &amp; kernel observability</h3>
+            <p>eBPF-powered visibility across fleets and clusters — one pane of glass from the
+               device to the container.</p>
+          </article>
+          <article class="solution reveal" data-reveal>
+            <h3>Smart cities &amp; infrastructure monitoring</h3>
+            <p>City-scale sensor networks, geospatial context, and disaster-ready alerting built on
+               resilient edge pipelines.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ARCHITECTURE / HOW IT WORKS ===== -->
+    <section id="architecture" class="section section--alt">
+      <div class="container">
+        <div class="section__head reveal" data-reveal>
+          <span class="eyebrow">How it works</span>
+          <h2>From signal to certainty in four stages</h2>
+        </div>
+        <ol class="flow">
+          <li class="flow__step reveal" data-reveal>
+            <span class="flow__num">01</span>
+            <h3>Sense</h3>
+            <p>IoT sensors and RFID readers capture the physical world at the edge — resilient,
+               secure, and always on.</p>
+          </li>
+          <li class="flow__step reveal" data-reveal>
+            <span class="flow__num">02</span>
+            <h3>Compute</h3>
+            <p>WebAssembly modules process data on-site in milliseconds; eBPF instruments the system
+               itself with zero overhead.</p>
+          </li>
+          <li class="flow__step reveal" data-reveal>
+            <span class="flow__num">03</span>
+            <h3>Validate</h3>
+            <p>The graph engine models every relationship and continuously proves data integrity,
+               lineage, and consistency.</p>
+          </li>
+          <li class="flow__step reveal" data-reveal>
+            <span class="flow__num">04</span>
+            <h3>Observe</h3>
+            <p>Unified, correlated telemetry gives your teams real-time answers — from a single
+               sensor to the whole fleet.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="section stats-sec">
+      <div class="container stats">
+        <div class="stat reveal" data-reveal>
+          <span class="stat__num" data-count="1000000">0</span><span class="stat__plus">+</span>
+          <p>Edge endpoints per deployment</p>
+        </div>
+        <div class="stat reveal" data-reveal>
+          <span class="stat__num" data-count="99.99" data-decimals="2">0</span><span class="stat__plus">%</span>
+          <p>Pipeline availability target</p>
+        </div>
+        <div class="stat reveal" data-reveal>
+          <span class="stat__num" data-count="1" data-suffix="ms"><1</span>
+          <p>Edge compute latency</p>
+        </div>
+        <div class="stat reveal" data-reveal>
+          <span class="stat__num" data-count="6">0</span>
+          <p>Deep-tech disciplines, one platform</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPANY ===== -->
+    <section id="company" class="section section--alt">
+      <div class="container company">
+        <div class="company__text reveal" data-reveal>
+          <span class="eyebrow">The company</span>
+          <h2>Deep-tech, engineered end to end</h2>
+          <p>axiomloop researches, designs, develops, and deploys computing systems across software,
+             hardware, firmware, and embedded platforms. From cloud-native and edge computing to
+             AI, computer vision, autonomous systems, and digital twins — we build the foundational
+             technology that intelligent infrastructure runs on.</p>
+          <p>We serve businesses, governments, and institutions across India and abroad — from
+             warehouse automation and industrial IoT to smart cities, remote sensing, and
+             disaster-response systems.</p>
+          <a href="#contact" class="btn btn--ghost">Learn more about our mission →</a>
+        </div>
+        <ul class="company__grid reveal" data-reveal>
+          <li>Autonomous systems &amp; robotics</li>
+          <li>AI, ML &amp; generative AI</li>
+          <li>Computer vision &amp; digital twins</li>
+          <li>Cybersecurity &amp; Linux platforms</li>
+          <li>Geospatial &amp; remote sensing</li>
+          <li>Cloud-native &amp; edge computing</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== CTA / TRY ===== -->
+    <section id="try" class="cta-sec">
+      <div class="container cta">
+        <h2 class="reveal" data-reveal>Ready to build on the edge?</h2>
+        <p class="reveal" data-reveal>Bring your hardest signal-to-certainty problem. We'll show you the
+          platform, run a pilot, and prove it against your data.</p>
+        <div class="cta__actions reveal" data-reveal>
+          <a href="#contact" class="btn btn--primary btn--lg" data-modal="pilot">Request a pilot</a>
+          <a href="#platform" class="btn btn--ghost btn--lg">Read the docs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="contact">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#top" class="brand">
+          <img src="assets/img/icon-animated.svg" alt="" class="brand__mark" width="36" height="36" />
+          <span class="brand__name brand__name--stack">
+            <span class="brand__row brand__top" aria-hidden="true"><b>A</b><b>X</b><b>I</b><b>O</b><b>M</b></span>
+            <span class="brand__row brand__bot" aria-hidden="true"><b>L</b><b>O</b><b>O</b><b>P</b></span>
+            <span class="vh">axiomloop</span>
+          </span>
+        </a>
+        <p>Deep-tech infrastructure for the physical &amp; digital edge.</p>
+        <p class="footer__addr">India &amp; abroad</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h4>Platform</h4>
+          <a href="#capabilities">IoT &amp; Edge</a>
+          <a href="#capabilities">WebAssembly</a>
+          <a href="#capabilities">eBPF</a>
+          <a href="#capabilities">Graph validation</a>
+        </div>
+        <div class="footer__col">
+          <h4>Solutions</h4>
+          <a href="#solutions">Supply chain</a>
+          <a href="#solutions">Industrial IoT</a>
+          <a href="#solutions">Observability</a>
+          <a href="#solutions">Smart cities</a>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="#company">About</a>
+          <a href="#try" data-modal="pilot">Get started</a>
+          <a href="mailto:hello@axiomloop.com">hello@axiomloop.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year"></span> axiomloop. All rights reserved.</span>
+      <span class="footer__made">Engineered for the edge.</span>
+    </div>
+  </footer>
+
+  <!-- ===== DIALOG: Talk to us ===== -->
+  <dialog class="modal" id="modal-talk" aria-labelledby="talk-title">
+    <form class="modal__form" id="form-talk" method="POST"
+          action="https://formspree.io/f/YOUR_TALK_FORM_ID">
+      <button type="button" class="modal__close" data-close aria-label="Close dialog">&times;</button>
+      <span class="eyebrow">Talk to us</span>
+      <h2 id="talk-title" class="modal__title">Let's start a conversation</h2>
+      <p class="modal__sub">Tell us what you're working on and the right person will get back to you.</p>
+
+      <input type="hidden" name="_subject" value="[axiomloop] New 'Talk to us' enquiry" />
+      <input type="hidden" name="form_type" value="talk" />
+      <!-- honeypot: bots fill this, humans don't -->
+      <input type="text" name="_gotcha" class="modal__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <div class="field">
+        <label for="t-name">Full name</label>
+        <input id="t-name" name="name" type="text" required autocomplete="name" />
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="t-email">Work email</label>
+          <input id="t-email" name="email" type="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="t-company">Company</label>
+          <input id="t-company" name="company" type="text" autocomplete="organization" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="t-message">How can we help?</label>
+        <textarea id="t-message" name="message" rows="4" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--block modal__submit">Send message</button>
+      <p class="modal__status" role="status" aria-live="polite"></p>
+      <p class="modal__legal">By submitting you agree to be contacted about your enquiry.</p>
+    </form>
+  </dialog>
+
+  <!-- ===== DIALOG: Request a pilot ===== -->
+  <dialog class="modal" id="modal-pilot" aria-labelledby="pilot-title">
+    <form class="modal__form" id="form-pilot" method="POST"
+          action="https://formspree.io/f/YOUR_PILOT_FORM_ID">
+      <button type="button" class="modal__close" data-close aria-label="Close dialog">&times;</button>
+      <span class="eyebrow">Request a pilot</span>
+      <h2 id="pilot-title" class="modal__title">Run axiomloop against your data</h2>
+      <p class="modal__sub">Share a few details and we'll scope a pilot for your hardest signal-to-certainty problem.</p>
+
+      <input type="hidden" name="_subject" value="[axiomloop] New pilot request" />
+      <input type="hidden" name="form_type" value="pilot" />
+      <input type="text" name="_gotcha" class="modal__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <div class="field-row">
+        <div class="field">
+          <label for="p-name">Full name</label>
+          <input id="p-name" name="name" type="text" required autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="p-role">Role / title</label>
+          <input id="p-role" name="role" type="text" autocomplete="organization-title" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="p-email">Work email</label>
+          <input id="p-email" name="email" type="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="p-company">Company</label>
+          <input id="p-company" name="company" type="text" required autocomplete="organization" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="p-usecase">Primary use case</label>
+          <select id="p-usecase" name="use_case" required>
+            <option value="" disabled selected>Select one…</option>
+            <option>IoT &amp; Edge</option>
+            <option>WebAssembly compute</option>
+            <option>eBPF observability</option>
+            <option>RFID &amp; RF sensing</option>
+            <option>Unified observability</option>
+            <option>Graph-based validation</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="p-scale">Deployment scale</label>
+          <select id="p-scale" name="scale">
+            <option value="" disabled selected>Select one…</option>
+            <option>Proof of concept</option>
+            <option>&lt; 10k endpoints</option>
+            <option>10k – 100k endpoints</option>
+            <option>100k – 1M endpoints</option>
+            <option>1M+ endpoints</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="p-details">What are you trying to solve?</label>
+        <textarea id="p-details" name="details" rows="4" required></textarea>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--block modal__submit">Request pilot</button>
+      <p class="modal__status" role="status" aria-live="polite"></p>
+      <p class="modal__legal">We'll only use these details to scope and discuss your pilot.</p>
+    </form>
+  </dialog>
+
+  <!-- Three.js (UMD, GitHub-Pages friendly) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="assets/js/three-hero.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/forms.js" defer></script>
+</body>
+</html>
