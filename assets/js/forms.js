@@ -104,7 +104,7 @@
     form.classList.add("sent");
     const status = form.querySelector(".modal__status");
     const kind = form.querySelector('input[name="form_type"]').value === "pilot"
-      ? "Pilot request received — we'll be in touch shortly. "
+      ? "Request received — we'll be in touch about early access. "
       : "Message sent — thanks! We'll reply soon. ";
     setStatus(status, "ok", kind);
   }
